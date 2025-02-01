@@ -1,37 +1,70 @@
-import React, { useState } from 'react'
+
+import React, { useState } from 'react';
 
 export const CheckBox = ({ handleChange, options, correctAns }) => {
-  const [option1, option2, option3, option4] = options
+  const [selectedValue, setSelectedValue] = useState('');
+  const [showFeedback, setShowFeedback] = useState(false); 
+  const [isCorrect, setIsCorrect] = useState(false); 
 
-  const [selectedValue, setselectedValue] = useState('');
-  const [show, setShow] = useState(false)
   const handleRadioChange = (event) => {
-    setselectedValue(event.target.value);
-    handleChange(event.target.value, correctAns)
+    const value = event.target.value;
+    setSelectedValue(value);
+    setIsCorrect(value === correctAns);
+    setShowFeedback(false); 
+    handleChange(value, correctAns);
   };
-  const showAnswer = () => {
-    setselectedValue(correctAns)
-    setShow(!show)
-  }
+
+  const showCorrectAnswer = () => {
+    setShowFeedback(true); 
+  };
+
   return (
     <div>
-      <input value={option1} name={option1} type="radio" onChange={handleRadioChange}
-        checked={selectedValue === option1} /> {option1}
-      <br />
-      <input value={option2} name={option2} type="radio" onChange={handleRadioChange} checked={selectedValue === option2} /> {option2}
-      <br />
-      <input value={option3} name={option3} type="radio" onChange={handleRadioChange} checked={selectedValue === option3} /> {option3}
-      <br />
-      <input value={option4} name={option4} type="radio" onChange={handleRadioChange} checked={selectedValue === option4} /> {option4}
-      <br />
-      <button style={{width:"150px", backgroundColor:"blue", color:"white",  fontSize:"17px", border:"none"}} onClick={showAnswer}> show </button>
+      {options.map((option, index) => (
+        <div key={index}>
+          <input
+            value={option}
+            name="quiz-option"
+            type="radio"
+            onChange={handleRadioChange}
+            checked={selectedValue === option}
+          />{' '}
+          {option}
+        </div>
+      ))}
+      <button
+        style={{
+          width: '150px',
+          backgroundColor: 'blue',
+          color: 'white',
+          fontSize: '17px',
+          border: 'none',
+          marginTop: '10px',
+        }}
+        onClick={showCorrectAnswer}
+      >
+        Show Answer
+      </button>
       <div>
-        <>
-          {show && <p><span style={{ color: "red", fontSize: "20px", fontWeight: "bold" }}> Incorrect!</span> The correct answer is <span style={{ color: "green", fontSize: "20px", fontWeight: "bold" }}> "{correctAns} "</span></p>}
-        </>
-        {/* {``} */}
+        {showFeedback && (
+          <p>
+            {isCorrect ? (
+              <span style={{ color: 'green', fontSize: '20px', fontWeight: 'bold' }}>
+                Correct!
+              </span>
+            ) : (
+              <span style={{ color: 'red', fontSize: '20px', fontWeight: 'bold' }}>
+                Incorrect! The correct answer is{' '}
+                <span style={{ color: 'green', fontSize: '20px', fontWeight: 'bold' }}>
+                  "{correctAns}"
+                </span>
+              </span>
+            )}
+          </p>
+        )}
       </div>
     </div>
+  );
+};
 
-  )
-}
+
