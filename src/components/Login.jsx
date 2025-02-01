@@ -32,8 +32,8 @@ const Login = () => {
             const data = await response.json();
 
             if (response.ok) {
-                localStorage.setItem("token", data.token); 
-                navigate("/quiz"); 
+                localStorage.setItem("token", data.token);
+                navigate("/quiz");
             } else {
                 alert(data.message || "Login failed. Please try again.");
             }
@@ -61,7 +61,7 @@ const Login = () => {
                     value={password}
                     required
                 />
-                <input type="submit" value="Login" />
+                <input type="submit" value="Login." />
             </form>
         </div>
     );
