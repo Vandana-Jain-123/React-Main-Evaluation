@@ -1,0 +1,15 @@
+.quiz-box{
+    margin: auto;
+    justify-content: center;
+   
+}
+.quiz-option{
+    width:500px;
+    height: 310px;
+    margin-left: 30%;
+    padding: 20px;
+    background-color: rgb(198, 234, 247);
+    margin-top: 50px;
+    border: 1px solid blue;
+
+}

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import "../styles/quiz.css"
 
 import { getDataFromApi, baseUrl } from './api'
+import {Link} from "react-router-dom"
 import { CheckBox } from './CheckBox';
 
 const Quiz = () => {
@@ -30,25 +32,44 @@ const Quiz = () => {
     "A state variable",
     "A React component"
   ]
-  // "answer": "A mutable object"
+ 
   const handleChange = (e) => {
     console.log("e", e);
 
   }
   return (
-    <div>Quiz
+    <div className='quiz-box'>
+    <h1>Quiz Test</h1>
+
       {quizData?.map((item) => {
         const [option1, option2, option3, option4] = item?.options
         return (
-          <div key={item?.id}>
-            <h3> {item?.question} </h3>
+          <div key={item?.id} className='quiz-option'>
+            <h3 style={{ color:"darkblue" }}>Q. {item?.question} </h3>
             <CheckBox correctAns={item?.answer} handleChange={handleChange} options={item?.options} />
           </div>
         )
 
       })}
+
+      <button style={{
+        position: "fixed",
+        bottom: "20px",
+        left: "20px",
+        padding: "10px 20px",
+        background: "blue",
+        color: "white",
+        border: "none",
+        borderRadius: "5px",
+        cursor: "pointer"
+      }}
+  
+      >
+        <Link style={{color:"white", textDecoration:"none"}}to="/result">Submit Quiz</Link>
+      
+      </button>
     </div>
   )
-}
+    }
 
 export default Quiz

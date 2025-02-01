@@ -7,12 +7,14 @@ const Navbar = () => {
         <>
             <nav className='navbar'>
                 <div className='navbar-left'>
-                    <Link to="/" className='nav-link'>Home</Link>
-                    <Link to="/quiz" className='nav-link'>Quiz</Link>
+                    <button style={{width:"100px", backgroundColor: "blue"}}><Link to="/" style={{ fontSize: "20px", textAlign: "center", color: "white", textDecoration:"none" }}>Home</Link></button>
+
+
+                    {/* <Link to="/quiz" className='nav-link'>Quiz</Link> */}
                 </div>
-                <div className='navbar-login'>
+                {/* <div className='navbar-login'>
                     <Link to="/login" className='nav-link'>Login</Link>
-                </div>
+                </div> */}
 
             </nav>
 

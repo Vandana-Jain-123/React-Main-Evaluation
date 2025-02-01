@@ -1,0 +1,22 @@
+.home{
+    background-color: lightblue;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 600px;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+
+
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 25px;
+    color: grey;
+    text-align: center;
+}

@@ -4,7 +4,7 @@ export const CheckBox = ({ handleChange, options, correctAns }) => {
   const [option1, option2, option3, option4] = options
 
   const [selectedValue, setselectedValue] = useState('');
-const [show,setShow] = useState(false)
+  const [show, setShow] = useState(false)
   const handleRadioChange = (event) => {
     setselectedValue(event.target.value);
     handleChange(event.target.value, correctAns)
@@ -24,12 +24,12 @@ const [show,setShow] = useState(false)
       <br />
       <input value={option4} name={option4} type="radio" onChange={handleRadioChange} checked={selectedValue === option4} /> {option4}
       <br />
-     <button onClick={showAnswer}> show </button>
+      <button style={{width:"150px", backgroundColor:"blue", color:"white",  fontSize:"17px", border:"none"}} onClick={showAnswer}> show </button>
       <div>
         <>
-        {show && <p>Incorrect! The correct answer is ${correctAns} </p>  }
+          {show && <p><span style={{ color: "red", fontSize: "20px", fontWeight: "bold" }}> Incorrect!</span> The correct answer is <span style={{ color: "green", fontSize: "20px", fontWeight: "bold" }}> "{correctAns} "</span></p>}
         </>
-      {/* {``} */}
+        {/* {``} */}
       </div>
     </div>
 
